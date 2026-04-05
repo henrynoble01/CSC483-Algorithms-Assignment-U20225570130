@@ -244,14 +244,22 @@ class QuickSort implements Sorter {
     }
 
     private static void saveDataset(int[] arr, String type, int size) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("dataset/dataset_" + type + "_" + size + ".csv"))) {
+        // Resolve dataset dir relative to the JVM working directory (project root)
+        String projectRoot = System.getProperty("user.dir");
+        File datasetDir = new File(projectRoot, "dataset");
+        if (!datasetDir.exists() && !datasetDir.mkdirs()) {
+            System.err.println("Failed to create dataset directory: " + datasetDir.getAbsolutePath());
+            return;
+        }
+        File outFile = new File(datasetDir, "dataset_" + type + "_" + size + ".csv");
+        try (PrintWriter writer = new PrintWriter(new FileWriter(outFile))) {
             for (int i = 0; i < arr.length; i++) {
                 writer.print(arr[i]);
                 if (i < arr.length - 1) writer.print(",");
             }
             writer.println();
         } catch (IOException e) {
-            System.err.println("Failed to write dataset " + type + "_" + size);
+            System.err.println("Failed to write dataset " + type + "_" + size + ": " + e.getMessage());
         }
     }
 

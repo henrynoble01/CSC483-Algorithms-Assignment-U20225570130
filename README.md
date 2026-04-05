@@ -31,7 +31,7 @@ Open a terminal or command prompt in the root directory of the workspace (`csc48
 
 1. **Compile the code:**
    ```bash
-   javac -d . com.csc483.assignment2.sorting/*.java
+   javac -d . com.csc483.assignment2.sorting/Main.java
    ```
 
 2. **Run the application:**
