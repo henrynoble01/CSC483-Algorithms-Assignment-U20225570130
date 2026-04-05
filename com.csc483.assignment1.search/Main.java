@@ -1,12 +1,29 @@
+package com.csc483.assignment1.search;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Main driver class for testing search functionality.
+ */
 public class Main {
     
     // Sequential search by ID: O(N)
+    /**
+     * Performs sequential search by product ID.
+     * @param products Array to search
+     * @param targetId Target ID
+     * @return Found product or null
+     */
+    /**
+     * Performs sequential search by product ID.
+     * @param products Array to search
+     * @param targetId Target ID
+     * @return Found product or null
+     */
     public static Product sequentialSearchById(Product[] products, int targetId) {
         for (Product p : products) {
             if (p.getProductId() == targetId) {
@@ -17,6 +34,18 @@ public class Main {
     }
 
     // Binary search by ID: O(log N) (Assumes array is sorted)
+    /**
+     * Performs binary search by product ID. Assumes array is sorted.
+     * @param products Sorted array to search
+     * @param targetId Target ID
+     * @return Found product or null
+     */
+    /**
+     * Performs binary search by product ID. Assumes array is sorted.
+     * @param products Sorted array to search
+     * @param targetId Target ID
+     * @return Found product or null
+     */
     public static Product binarySearchById(Product[] products, int targetId) {
         int left = 0;
         int right = products.length - 1;
@@ -36,6 +65,18 @@ public class Main {
     }
 
     // Sequential search by Name: O(N)
+    /**
+     * Performs sequential search by product Name.
+     * @param products Array to search
+     * @param targetName Target item name
+     * @return Found product or null
+     */
+    /**
+     * Performs sequential search by product Name.
+     * @param products Array to search
+     * @param targetName Target item name
+     * @return Found product or null
+     */
     public static Product searchByName(Product[] products, String targetName) {
         for (Product p : products) {
             if (p.getProductName().equals(targetName)) {
@@ -45,6 +86,14 @@ public class Main {
         return null;
     }
 
+    /**
+     * Main method to benchmark searches.
+     * @param args command line arguments
+     */
+    /**
+     * Main method to benchmark searches.
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         int datasetSize = 100000;
         int maxId = 200000;

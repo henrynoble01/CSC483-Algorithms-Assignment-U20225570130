@@ -1,10 +1,23 @@
+package com.csc483.assignment1.search;
+
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Manages an array of products and provides search functionalities.
+ */
 public class ProductManager {
     private Product[] products;
     private Map<String, Product> nameIndex;
 
+    /**
+     * Initialize the ProductManager with a set of products.
+     * @param initialProducts Initial array of products
+     */
+    /**
+     * Initialize the ProductManager with a set of products.
+     * @param initialProducts Initial array of products
+     */
     public ProductManager(Product[] initialProducts) {
         this.products = initialProducts;
         buildNameIndex();
@@ -21,6 +34,14 @@ public class ProductManager {
         }
     }
 
+    /**
+     * Retrieves the array of products.
+     * @return current array of products
+     */
+    /**
+     * Retrieves the array of products.
+     * @return current array of products
+     */
     public Product[] getProducts() {
         return products;
     }

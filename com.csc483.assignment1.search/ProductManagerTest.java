@@ -1,6 +1,11 @@
+package com.csc483.assignment1.search;
+
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * public class 
+ */
 public class ProductManagerTest {
 
     @Test
@@ -50,4 +55,30 @@ public class ProductManagerTest {
         Assert.assertNotNull(found);
         Assert.assertEquals(100, found.getProductId());
     }
-}
+
+    @Test
+    public void testEmptyArray() {
+        ProductManager manager = new ProductManager(new Product[0]);
+        Product p = manager.searchByName("Ghost");
+        Assert.assertNull(p);
+    }
+
+    @Test
+    public void testNullInputs() {
+        ProductManager manager = new ProductManager(null);
+        Product newProduct = new Product(99, null, null, 1.0, 1);
+        Product[] result = manager.addProduct(null, newProduct);
+        Assert.assertEquals(1, result.length);
+        Assert.assertNull(manager.searchByName(null));
+    }
+    
+    @Test
+    public void testDuplicates() {
+        Product p1 = new Product(1, "A", "C", 1.0, 1);
+        Product p2 = new Product(1, "A", "C", 1.0, 1);
+        ProductManager manager = new ProductManager(new Product[]{p1});
+        manager.addProduct(manager.getProducts(), p2);
+        Assert.assertEquals(2, manager.getProducts().length);
+    }
+
+
